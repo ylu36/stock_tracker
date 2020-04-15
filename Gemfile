@@ -5,6 +5,7 @@ ruby '2.6.5'
 
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
+gem "font-awesome-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2'
 # Use pg as the database for Active Record

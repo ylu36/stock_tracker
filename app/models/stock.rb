@@ -6,6 +6,10 @@ class Stock < ApplicationRecord
       secret_token:  keychains[:sandbox_api_private_key],
       endpoint: 'https://sandbox.iexapis.com/v1'
     )
-    client.price(ticker_sym)
+    begin
+      new(ticker: ticker_sym, name: client.company(ticker_sym).company_name, last_price: client.price(ticker_sym))
+    rescue => e
+      nil
+    end
   end
 end
