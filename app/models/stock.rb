@@ -3,6 +3,9 @@ class Stock < ApplicationRecord
   has_many :users, through: :user_stocks
 
   validates :name, :ticker, presence: true
+  def self.check_db(ticker_sym)
+    Stock.where(ticker: ticker_sym).first
+  end
 
   def self.new_lookup(ticker_sym)
     keychains = Rails.application.credentials.iex_client
