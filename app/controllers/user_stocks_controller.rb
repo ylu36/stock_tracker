@@ -15,4 +15,11 @@ class UserStocksController < ApplicationController
     stock = Stock.check_db(params[:ticker])
     stock.present?
   end
+
+  def destroy
+    stock = Stock.find(params[:id])
+    UserStock.where(user_id: current_user.id, stock_id: stock.id).first.destroy
+    flash[:notice] = "#{stock.ticker} was successfully removed from portfolio"
+    redirect_to my_portfolio_path
+  end
 end

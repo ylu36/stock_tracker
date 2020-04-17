@@ -17,7 +17,7 @@ class User < ApplicationRecord
   def stock_already_tracked?(ticker)
     # check if stock is already in Stock table
     stock = Stock.check_db(ticker)
-    false unless stock
+    return false unless stock
     # check if stock is already in UserStock table
     stocks.where(id: stock.id).exists?
   end
