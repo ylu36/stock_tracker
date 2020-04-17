@@ -21,4 +21,9 @@ class User < ApplicationRecord
     # check if stock is already in UserStock table
     stocks.where(id: stock.id).exists?
   end
+
+  def full_name
+    return "#{first_name} #{last_name}" if first_name || last_name
+    "Anonymous"
+  end
 end
