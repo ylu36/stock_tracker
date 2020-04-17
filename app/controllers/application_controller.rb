@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
+    # from devise gem doc: permit additional params to be passed from controller to model
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
   end
